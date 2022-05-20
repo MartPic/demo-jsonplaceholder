@@ -4,7 +4,6 @@ export default class JSONPlaceholderService {
         this.$http = $http;
     }
 
-    //chiamata all'url
     getUsers$() {
         return this.$http({
             method: "GET",
