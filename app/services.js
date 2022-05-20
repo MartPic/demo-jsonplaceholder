@@ -1,6 +1,20 @@
 'use strict';
 
-//importo i service inserendo il percorso del file
-import jsonplaceholderService from "/service/jsonplaceholder.service.js";
+//import JSONPlaceholderService from "./service/jsonplaceholder.service";
 
-angular.module("myApp.services", []).service("jsonplaceholderService", jsonplaceholderService)
+class JSONPlaceholderService {
+    // @ngInject
+    constructor($http) {
+        this.$http = $http;
+    }
+
+    //chiamata all'url
+    getUsers$() {
+        return this.$http({
+            method: "GET",
+            url: `https://jsonplaceholder.typicode.com/users`
+        });
+    }
+}
+
+angular.module("myApp.services", []).service("jsonplaceholderService", JSONPlaceholderService);

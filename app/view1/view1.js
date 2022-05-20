@@ -11,10 +11,10 @@ angular.module('myApp.view1', ['ngRoute'])
 
     //importare il service
 .controller('View1Ctrl', function($scope, jsonplaceholderService) {
-  $scope.jsonplaceholderService = jsonplaceholderService;
-  $scope.jsonplaceholderService.getUsers$()
-      .subscribe(result => {
-        $scope.userDataJsonOptions = result;
+  //$scope.jsonplaceholderService = jsonplaceholderService;
+  jsonplaceholderService.getUsers$()
+      .then(result => {
+        $scope.userDataJsonOptions = result.data;
       });
 });
 

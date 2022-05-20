@@ -10,8 +10,8 @@
 <body ng-app="myApp">
 
     <div ng-controller="View1Ctrl">
-        <select ng-model="selectedItem" ng-options="View1Ctrl.userDataJsonOptions"></select>
-        <p>Hai selezionato {{selectedItem}}!</p>
+        <select ng-model="selectedUser" ng-options="option.username for option in userDataJsonOptions"></select>
+        <p>Hai selezionato {{selectedUser.username}}!</p>
     </div>
 </body>
 </html>
