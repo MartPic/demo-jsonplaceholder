@@ -1,6 +1,7 @@
 'use strict';
 
 //import JSONPlaceholderService from "./service/jsonplaceholder.service";
+//import angular from "angular";
 
 class JSONPlaceholderService {
     // @ngInject
@@ -13,6 +14,13 @@ class JSONPlaceholderService {
         return this.$http({
             method: "GET",
             url: `https://jsonplaceholder.typicode.com/users`
+        });
+    }
+
+    getPostsFromUser(id) {
+        return this.$http({
+            method: "GET",
+            url: `https://jsonplaceholder.typicode.com/posts?userId=${id}`
         });
     }
 }
