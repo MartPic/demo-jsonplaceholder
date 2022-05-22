@@ -1,0 +1,13 @@
+<div>
+    <div>
+        <h3>{{postData.title}}</h3>
+        <div>{{postData.body}}</div>
+    </div>
+
+    <div>
+        <div class="comment" ng-repeat="comment in commentsData">
+            <b>{{comment.email}}</b>
+            <div>{{comment.body}}</div>
+        </div>
+    </div>
+</div>

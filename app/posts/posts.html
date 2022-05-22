@@ -1,0 +1,28 @@
+<div ng-app="myApp">
+
+    <div ng-controller="PostsCtrl">
+        <h1>Scegli un utente e visualizza i suoi post!</h1>
+        <labe>Elenco utenti:
+            <select ng-model="selectedUser" ng-change="onUserSelected()" ng-options="option.username for option in userDataJsonOptions"></select>
+        </labe>
+
+        <div ng-if="selectedUser">
+            <hr>
+            <p>Dati dell'utente selezionato:</p>
+            <ul>
+                <li>Nome: {{selectedUser.name}}</li>
+                <li>Email: {{selectedUser.email}}</li>
+                <li>Città: {{selectedUser.address.city}}</li>
+            </ul>
+            <hr>
+
+            <h2>Ecco i post di {{selectedUser.username}}:</h2>
+            <div id="postswrap">
+                <div class="post" ng-repeat="post in userPosts">
+                    <h3><a href="#!/post/{{post.id}}">{{post.title}}</a></h3>
+                    <div>{{post.body}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

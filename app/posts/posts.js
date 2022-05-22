@@ -1,16 +1,16 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('myApp.posts', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
+  $routeProvider.when('/posts', {
+    templateUrl: 'posts/posts.html',
+    controller: 'PostsCtrl'
   });
 }])
 
     //importare il service
-.controller('View1Ctrl', function($scope, jsonplaceholderService) {
+.controller('PostsCtrl', function($scope, jsonplaceholderService) {
   jsonplaceholderService.getUsers$()
       .then(result => {
         $scope.userDataJsonOptions = result.data;
