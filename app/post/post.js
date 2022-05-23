@@ -11,26 +11,37 @@ angular.module('myApp.post', ['ngRoute'])
 
     //importare il service
     .controller('PostCtrl', function ($scope, $routeParams, jsonplaceholderService) {
-        jsonplaceholderService.getPost($routeParams.postId)
-            .then(result => {
-                $scope.postError = false;
-                $scope.postData = result.data;
-            })
-            .catch(error => {
-                $scope.postError = true;
-                $scope.postData = null;
-            });
-        $scope.openComments = () => {
-            jsonplaceholderService.getPostComments($routeParams.postId)
-                .then(result => {
+        async function GetPostList() {
+            try {
+                const res = await jsonplaceholderService.getPost($routeParams.postId);
+                $scope.$apply(() => {
+                    $scope.postData = res.data;
+                    $scope.postError = false;
+                });
+            } catch (error) {
+                $scope.$apply(() => {
+                    $scope.postError = true;
+                    $scope.postData = null;
+                });
+            }
+        }
+
+        $scope.openComments = async () => {
+            try {
+                const res = await jsonplaceholderService.getPostComments($routeParams.postId);
+                $scope.$apply(() => {
+                    $scope.commentsData = res.data;
                     $scope.commentError = false;
-                    $scope.commentsData = result.data;
-                })
-                .catch(error => {
+                });
+            } catch (error) {
+                $scope.$apply(() => {
                     $scope.commentError = true;
                     $scope.commentsData = null;
                 });
+            }
         };
+
+        GetPostList();
     });
 
 
