@@ -13,12 +13,24 @@ angular.module('myApp.post', ['ngRoute'])
 .controller('PostCtrl', function($scope, $routeParams, jsonplaceholderService) {
   jsonplaceholderService.getPost($routeParams.postId)
       .then(result => {
-        $scope.postData = result.data;
+          $scope.postError = false;
+          $scope.postData = result.data;
+      })
+      .catch(error => {
+          $scope.postError = true;
+          $scope.postData = null;
       });
-  jsonplaceholderService.getPostComments($routeParams.postId)
-      .then(result => {
-          $scope.commentsData = result.data;
-      });
+  $scope.openComments = () => {
+      jsonplaceholderService.getPostComments($routeParams.postId)
+          .then(result => {
+              $scope.commentError = false;
+              $scope.commentsData = result.data;
+          })
+          .catch(error => {
+              $scope.commentError = true;
+              $scope.commentsData = null;
+          });
+  };
 });
 
 

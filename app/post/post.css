@@ -5,3 +5,7 @@
     margin-top: 30px;
     background-color: #efefef;
 }
+
+#singlepost > button {
+    margin-top: 15px;
+}

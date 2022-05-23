@@ -8,4 +8,10 @@
     border: solid 2px #aaa;
     border-radius: 10px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post > a {
+    margin-top: auto;
 }

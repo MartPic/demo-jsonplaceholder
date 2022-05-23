@@ -1,11 +1,18 @@
 <div>
-    <div>
+    <div ng-if="postError">
+        <p>Errore durante il caricamento del post</p>
+    </div>
+    <div id="singlepost" ng-if="postData">
         <h3>{{postData.title}}</h3>
         <div>{{postData.body}}</div>
+        <button type="button" ng-click="openComments()">Mostra commenti</button>
     </div>
 
     <div>
-        <div class="comment" ng-repeat="comment in commentsData">
+        <div ng-if="commentError">
+            <p>Errore durante il caricamento dei commenti</p>
+        </div>
+        <div class="comment" ng-if="commentsData" ng-repeat="comment in commentsData">
             <b>{{comment.email}}</b>
             <div>{{comment.body}}</div>
         </div>
