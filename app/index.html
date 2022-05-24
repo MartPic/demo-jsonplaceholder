@@ -20,7 +20,10 @@
     <link rel="stylesheet" href="post/post.css">
     <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+
+
+<body ng-app="myApp" ng-cloak ng-strict-di>
+
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -32,10 +35,9 @@
 <!--  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>-->
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular-route/angular-route.js"></script>
-<script src="services.js"></script>
-<script src="app.js"></script>
-<script src="posts/posts.js"></script>
-<script src="post/post.js"></script>
+
+
+<script src="app.js" type="module"/>
 <script src="core/version/version.js"></script>
 <script src="core/version/version-directive.js"></script>
 <script src="core/version/interpolate-filter.js"></script>

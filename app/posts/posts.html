@@ -1,37 +1,29 @@
-<div ng-app="myApp">
+<app.titleUser></app.titleUser>
 
-    <div ng-controller="PostsCtrl">
-        <h1>Scegli un utente e visualizza i suoi post!</h1>
-        <label>Elenco utenti:
-            <select ng-model="selectedUser" ng-change="onUserSelected()" ng-options="option.username for option in userDataJsonOptions"></select>
-        </label>
+<div ng-controller="PostsCtrl">
+    <div ng-if="selectedUser">
+        <hr>
+        <p>Dati dell'utente selezionato:</p>
+        <ul>
+            <li>Nome: {{selectedUser.name}}</li>
+            <li>Email: {{selectedUser.email}}</li>
+            <li>Città: {{selectedUser.address.city}}</li>
+        </ul>
+        <hr>
 
-        <div ng-if="userError">
-            <p>Errore durante il caricamento degli utenti</p>
+        <h2>Ecco i post di {{selectedUser.username}}:</h2>
+        <div ng-if="postsError">
+            <p>Errore durante il caricamento dei post dell'utente</p>
         </div>
-
-        <div ng-if="selectedUser">
-            <hr>
-            <p>Dati dell'utente selezionato:</p>
-            <ul>
-                <li>Nome: {{selectedUser.name}}</li>
-                <li>Email: {{selectedUser.email}}</li>
-                <li>Città: {{selectedUser.address.city}}</li>
-            </ul>
-            <hr>
-
-            <h2>Ecco i post di {{selectedUser.username}}:</h2>
-            <div ng-if="postsError">
-                <p>Errore durante il caricamento dei post dell'utente</p>
-            </div>
-            <div id="postswrap" ng-if="userPosts">
-                <div class="post" ng-repeat="post in userPosts">
-                    <!--<h3><a href="#!/post/{{post.id}}">{{post.title}}</a></h3>-->
-                    <h3>{{post.title}}</h3>
-                    <div>{{post.body}}</div>
-                    <a href="#!/post/{{post.id}}"><button type="button">Vai al post</button></a>
-                </div>
+        <div id="postswrap" ng-if="userPosts">
+            <div class="post" ng-repeat="post in userPosts">
+                <!--<h3><a href="#!/post/{{post.id}}">{{post.title}}</a></h3>-->
+                <h3>{{post.title}}</h3>
+                <div>{{post.body}}</div>
+                <a href="#!/post/{{post.id}}">
+                    <button type="button">Vai al post</button>
+                </a>
             </div>
         </div>
     </div>
-</div>
+</div>s

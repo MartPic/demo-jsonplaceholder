@@ -1,0 +1,10 @@
+<h1>Scegli un utente e visualizza i suoi post!</h1>
+<label>Elenco utenti:
+    <select ng-model="selectedUser" ng-change="onUserSelected()"
+            ng-options="option.username for option in userDataJsonOptions"></select>
+</label>
+
+<div ng-if="userError">
+    <p>Errore durante il caricamento degli utenti</p>
+</div>
+

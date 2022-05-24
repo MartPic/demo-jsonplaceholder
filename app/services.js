@@ -1,8 +1,3 @@
-'use strict';
-
-//import JSONPlaceholderService from "./service/jsonplaceholder.service";
-//import angular from "angular";
-
 class JSONPlaceholderService {
     // @ngInject
     constructor($http) {
@@ -38,5 +33,3 @@ class JSONPlaceholderService {
         });
     }
 }
-
-angular.module("myApp.services", []).service("jsonplaceholderService", JSONPlaceholderService);
